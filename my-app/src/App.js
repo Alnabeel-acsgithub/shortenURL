@@ -84,7 +84,7 @@ const getOriginalUrl = (shortUrl) => {
                 </form>{shortenedUrl && (
                     <div className="result-container">
                         <p className="shortened-url">Shortened URL: <a href={originalUrl} target="_blank" rel="noopener noreferrer">{shortenedUrl}</a></p>
-                        <QRCode value={shortenedUrl} />
+                        <QRCode value={originalUrl} />
                     </div>
                 )}
             </div>
