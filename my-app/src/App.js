@@ -27,7 +27,10 @@ function UrlShortener() {
                     <input
                         type="text"
                         value={originalUrl}
-                        onChange={(e) => setOriginalUrl(e.target.value)}
+                        onChange={(e) => {
+                            console.log(e);
+                            setOriginalUrl(e.target.value);
+                        }}
                         placeholder="Enter original URL"
                         required
                         className="url-input"
@@ -35,8 +38,8 @@ function UrlShortener() {
                     <button type="submit" className="shorten-button">Shorten URL</button>
                 </form>{shortenedUrl && (
                     <div className="result-container">
-                        <p className="shortened-url">Shortened URL: <a href={originalUrl} target="_blank" rel="noopener noreferrer">{shortenedUrl}</a></p>
-                        <QRCode value={originalUrl} />
+                        <p className="shortened-url">Shortened URL: <a href={`http://localhost:5000/${shortenedUrl.replace('www.', '').replace('.com', '')}`} target="_blank" rel="noopener noreferrer">{shortenedUrl}</a></p>
+                        <QRCode value={shortenedUrl} />
                     </div>
                 )}
             </div>
