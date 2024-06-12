@@ -16,8 +16,7 @@ body {
     /* height: 100%; */
 }
 
-.url-shortener-card,
-.api-guide-card {
+.url-shortener-card, .api-guide-card {
     background-color: rgb(206, 255, 203);
     padding: 30px;
     border-radius: 10px;
@@ -28,15 +27,13 @@ body {
     margin: 10px 0;
 }
 
-.url-shortener-card h1,
-.api-guide-card h2 {
+.url-shortener-card h1, .api-guide-card h2 {
     color: #333;
     margin-bottom: 10px;
     font-size: 24px;
 }
 
-.url-shortener-card p,
-.api-guide-card p {
+.url-shortener-card p, .api-guide-card p {
     color: #666;
     margin-bottom: 20px;
     font-size: 16px;
@@ -92,8 +89,7 @@ body {
     word-wrap: break-word;
 }
 
-.api-endpoint,
-.api-example {
+.api-endpoint, .api-example {
     background: #f8f8f8;
     padding: 10px;
     border-radius: 4px;
@@ -102,7 +98,22 @@ body {
     margin: 10px 0;
 }
 
-.api-endpoint code,
-.api-example code {
+.api-endpoint code, .api-example code {
     font-family: monospace;
+}
+
+.captcha-container {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.captcha-image {
+    width: 100px; /* Adjust the size as needed */
+    height: auto;
+    margin-right: 10px;
+}
+
+.captcha-input {
+    flex: 1;
 }
