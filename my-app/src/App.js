@@ -11,7 +11,7 @@ function UrlShortener() {
     const [captchaVerified, setCaptchaVerified] = useState(false);
     const BASEURL = "https://666945b1930917696e66.appwrite.global";
 
-    const captchaText = "ABCD"; // This is the dummy captcha text
+    const captchaText = "ABCD)"; // This is the dummy captcha text
 
     const handleSubmit = async (e) => {
         e.preventDefault();
