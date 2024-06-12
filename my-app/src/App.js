@@ -4,13 +4,20 @@ import './App.css';
 
 function UrlShortener() {
     const [originalUrl, setOriginalUrl] = useState('');
-    // const [customAlias, setCustomAlias] = useState('');
+    const [customAlias, setCustomAlias] = useState('');
     const [shortenedUrl, setShortenedUrl] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        // Ensure the URL starts with 'https://'
+        let urlToShorten = originalUrl;
+        if (!urlToShorten.startsWith('http://') && !urlToShorten.startsWith('https://')) {
+            urlToShorten = `https://${urlToShorten}`;
+        }
+
         try {
-            const response = await axios.post('/api/shorten', { originalUrl });
+            const response = await axios.post('/api/shorten', { originalUrl: urlToShorten, customAlias });
             setShortenedUrl(response.data.alias);
         } catch (error) {
             console.error(error);
@@ -31,16 +38,16 @@ function UrlShortener() {
                         required
                         className="url-input"
                     />
-                    {/* <input
+                    <input
                         type="text"
                         value={customAlias}
                         onChange={(e) => setCustomAlias(e.target.value)}
                         placeholder="Enter custom alias (optional)"
                         className="alias-input"
-                    /> */}
+                    />
                     <button type="submit" className="shorten-button">Shorten URL</button>
                 </form>
-                {shortenedUrl && <p className="shortened-url">Shortened URL: {shortenedUrl}</p>}
+                {shortenedUrl && <p className="shortened-url">Shortened URL: <a href={`http://localhost:5000/${shortenedUrl.replace('www.', '').replace('.com', '')}`} target="_blank" rel="noopener noreferrer">{shortenedUrl}</a></p>}
             </div>
         </div>
     );
