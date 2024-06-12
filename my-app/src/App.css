@@ -1,0 +1,85 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #b2b2f5;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.url-shortener-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+}
+
+.url-shortener-card {
+    background-color: rgb(206, 255, 203);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+.url-shortener-card h1 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.url-shortener-card p {
+    color: #666;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.url-shortener-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.url-input,
+.alias-input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.url-input:focus,
+.alias-input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.shorten-button {
+    padding: 12px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.shorten-button:hover {
+    background-color: #0056b3;
+}
+
+.shortened-url {
+    margin-top: 20px;
+    color: #007bff;
+    font-weight: bold;
+    word-wrap: break-word;
+}
