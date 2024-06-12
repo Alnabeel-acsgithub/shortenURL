@@ -83,7 +83,7 @@ const getOriginalUrl = (shortUrl) => {
                     <button type="submit" className="shorten-button">Shorten URL</button>
                 </form>{shortenedUrl && (
                     <div className="result-container">
-                        <p className="shortened-url">Shortened URL: <a href={`http://localhost:5000/${shortenedUrl.replace('www.', '').replace('.com', '')}`} target="_blank" rel="noopener noreferrer">{shortenedUrl}</a></p>
+                        <p className="shortened-url">Shortened URL: <a href={originalUrl} target="_blank" rel="noopener noreferrer">{shortenedUrl}</a></p>
                         <QRCode value={shortenedUrl} />
                     </div>
                 )}
