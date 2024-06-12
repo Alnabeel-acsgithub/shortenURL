@@ -20,7 +20,7 @@ function UrlShortener() {
     return (
         <div className="url-shortener-container">
             <div className="url-shortener-card">
-                <h1>URL Shortener</h1>
+                <h1>Linkify</h1>
                 <p>Enter a URL to shorten it, and optionally provide a custom alias.</p>
                 <form onSubmit={handleSubmit} className="url-shortener-form">
                     <input
