@@ -6,16 +6,17 @@ function UrlShortener() {
     const [originalUrl, setOriginalUrl] = useState('');
     // const [customAlias, setCustomAlias] = useState('');
     const [shortenedUrl, setShortenedUrl] = useState('');
-
+    const BASEURL  = "https://666945b1930917696e66.appwrite.global"
     const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            const response = await axios.post('/api/shorten', { originalUrl });
-            setShortenedUrl(response.data.alias);
-        } catch (error) {
-            console.error(error);
-        }
-    };
+      e.preventDefault();
+      try {
+          const response = await axios.post(`${BASEURL}/?url=${originalUrl}`, { originalUrl });
+          setShortenedUrl(response.data.alias);
+      } catch (error) {
+          console.error(error);
+      }
+  };
+  
 
     return (
         <div className="url-shortener-container">
