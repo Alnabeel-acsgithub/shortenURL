@@ -1,6 +1,8 @@
-// import axios from 'axios';
+
+import axios from 'axios';
+import React, { useEffect,useState } from 'react';
+
 import QRCode from 'qrcode.react'; // Import the QR code component
-import React, { useEffect, useState } from 'react';
 import './App.css';
 import { databases } from './appWrite';
 
@@ -35,9 +37,7 @@ function UrlShortener() {
       return shortUrl;
     };
 
-const getOriginalUrl = (shortUrl) => {
-  return urlMap.get(shortUrl);
-};
+
 
     useEffect(() => {
       const fetchUrls = async () => {
@@ -65,7 +65,6 @@ const getOriginalUrl = (shortUrl) => {
                         type="text"
                         value={originalUrl}
                         onChange={(e) => {
-                            console.log(e);
                             setOriginalUrl(e.target.value);
                         }}
                         placeholder="Enter original URL"
@@ -81,12 +80,34 @@ const getOriginalUrl = (shortUrl) => {
                     />
                     
                     <button type="submit" className="shorten-button">Shorten URL</button>
-                </form>{shortenedUrl && (
+                </form>
+                {shortenedUrl && (
                     <div className="result-container">
                         <p className="shortened-url">Shortened URL: <a href={originalUrl} target="_blank" rel="noopener noreferrer">{shortenedUrl}</a></p>
                         <QRCode value={originalUrl} />
                     </div>
                 )}
+            </div>
+
+            <div className="api-guide-card">
+                <h2>API Integration Guide</h2>
+                <p>To integrate with our URL shortening API, use the following endpoint:</p>
+                <pre className="api-endpoint">
+                    <code>{`POST ${BASEURL}/?url=[YOUR_URL]`}</code>
+                </pre>
+                <p>Replace <code>[YOUR_URL]</code> with the URL you want to shorten. The response will include the shortened URL.</p>
+                <p>Example using <code>axios</code>:</p>
+                <pre className="api-example">
+                    <code>
+                        {`axios.post('${BASEURL}/?url=YOUR_URL', { originalUrl: 'YOUR_URL' })
+    .then(response => {
+        console.log(response.data.short_url);
+    })
+    .catch(error => {
+        console.error(error);
+    });`}
+                    </code>
+                </pre>
             </div>
         </div>
     );
