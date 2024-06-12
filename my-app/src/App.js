@@ -1,22 +1,22 @@
-import axios from 'axios';
+// import axios from 'axios';
 import React, { useState } from 'react';
+import QRCode from 'qrcode.react'; // Import the QR code component
 import './App.css';
 
 function UrlShortener() {
     const [originalUrl, setOriginalUrl] = useState('');
-    // const [customAlias, setCustomAlias] = useState('');
     const [shortenedUrl, setShortenedUrl] = useState('');
-    const BASEURL  = "https://666945b1930917696e66.appwrite.global"
+    const BASEURL = "https://666945b1930917696e66.appwrite.global";
+
     const handleSubmit = async (e) => {
-      e.preventDefault();
-      try {
-          const response = await axios.post(`${BASEURL}/?url=${originalUrl}`, { originalUrl });
-          setShortenedUrl(response.data.alias);
-      } catch (error) {
-          console.error(error);
-      }
-  };
-  
+        e.preventDefault();
+        try {
+            // const response = await axios.post(`${BASEURL}/?url=${originalUrl}`, { originalUrl });
+            setShortenedUrl(originalUrl);
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
     return (
         <div className="url-shortener-container">
@@ -32,16 +32,13 @@ function UrlShortener() {
                         required
                         className="url-input"
                     />
-                    {/* <input
-                        type="text"
-                        value={customAlias}
-                        onChange={(e) => setCustomAlias(e.target.value)}
-                        placeholder="Enter custom alias (optional)"
-                        className="alias-input"
-                    /> */}
                     <button type="submit" className="shorten-button">Shorten URL</button>
-                </form>
-                {shortenedUrl && <p className="shortened-url">Shortened URL: <a href={`http://localhost:5000/${shortenedUrl.replace('www.', '').replace('.com', '')}`} target="_blank" rel="noopener noreferrer">{shortenedUrl}</a></p>}
+                </form>{shortenedUrl && (
+                    <div className="result-container">
+                        <p className="shortened-url">Shortened URL: <a href={originalUrl} target="_blank" rel="noopener noreferrer">{shortenedUrl}</a></p>
+                        <QRCode value={originalUrl} />
+                    </div>
+                )}
             </div>
         </div>
     );
